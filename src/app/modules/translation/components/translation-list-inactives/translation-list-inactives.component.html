@@ -1,0 +1,18 @@
+<div class="container mt-5">
+
+    <h2>Tranlations Inactives</h2>
+
+    <button routerLink="/translator" class="btn btn-sm btn-secondary mb-4">Volver</button>
+
+    <table class="table">
+        <tbody>
+            <tr *ngFor="let translation of translations">
+                <td>{{ translation.toTranslator }}: {{ translation.translator }}</td>
+                <td>{{ translation.toTranslation }}: {{ translation.translation }}</td>
+                <td>
+                    <button (click)="restoreTranslation(translation.id)" class="btn btn-sm btn-light">restore</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
