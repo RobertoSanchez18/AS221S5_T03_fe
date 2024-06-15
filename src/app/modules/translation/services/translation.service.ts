@@ -8,7 +8,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class TranslationService {
 
-  selectedTranslation: WritableSignal<TranslationResponseDto | null> = signal(null);//variable para guardar lo quiero editar
+  selectedTranslation: WritableSignal<TranslationResponseDto | null> = signal(null);
 
   constructor(private http: HttpClient) { }
 
