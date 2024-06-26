@@ -1,12 +1,39 @@
-<h2 class="fs-5">Recientes <img
+<h2 class="fs-5 d-flex gap-2 mb-2">Recientes
+    <img
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABUAAAAVCAYAAACpF6WWAAAAAXNSR0IArs4c6QAAAUZJREFUOE+1lNFRwzAQRDedQCWBTpJKCJWQToBKEioBnkbrOZ9PtvlAP5448tvdO+kO+od1+APzQdJ9z/41KJCTpKOkpwAD/CHpU9K1EhlBgbwXIISiANDXnKCCXiS9dCAf8Dsv4G9dAOfn7r7ty1A7XGwcgCkPBtj/6D0ZevutEy6eo3J/hzOLRQ0noxQ4njnlI5SryAghSIMQjIv/XP9WhujUUGLko7MGRcBuW8IIdfSqeVtQ96KljIDvfu5aXYqIiJIAN6tJDN1ygoaTUFeEM3gyFZ1SbODT0SgcR3BsGA2mJ4hdM5Ta5OOU2YCpXbyibvICarXZQd4xQOKFaSlzp9fO6ohP2WYJM9QHmefo3hse7/90myqnvItgSuEpRNc9pXh66MyAI6jBHhaj2MOhszX57YxB7cn/1WcAzsu1Bd3R/OWWHwTYXRY2zybfAAAAAElFTkSuQmCC" />
-</h2> <button routerLink="/translation-inactives" class="btn btn-sm btn-outline-primary">Inactivos</button>
+</h2>
+
+
+<div class="d-flex align-items-center mb-3">
+
+    <div class="font-semibold fs-2">
+        <div *ngIf="showActive">
+            <h2>Activos</h2>
+        </div>
+
+        <div *ngIf="!showActive">
+            <h3>Inactivos</h3>
+        </div>
+    </div>
+
+    <div class="ms-3">
+        <button (click)="getActive()" class="btn btn-sm btn-primary me-2">Activos</button>
+        <button (click)="loadInactiveTranslations()" class="btn btn-sm btn-outline-secondary">Inactivos</button>
+    </div>
+</div>
+
+
+
 <table class="table">
+    <thead>
+        <th>Input</th>
+        <th>Output</th>
+    </thead>
     <tbody>
         <tr *ngFor="let translation of pagedTranslations">
             <td>{{ translation.toTranslator }}: {{ translation.translator }}</td>
             <td>{{ translation.toTranslation }}: {{ translation.translation }}</td>
-            <td>
+            <td *ngIf="showActive">
                 <button type="button" class="btn btn-sm btn-primary" style="margin-right: 10px;"
                     (click)="editTranslation(translation)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -18,6 +45,10 @@
                     </svg>
                 </button>
                 <button (click)="deleteTranslation(translation.id)" class="btn btn-sm btn-danger">delete</button>
+            </td>
+
+            <td *ngIf="!showActive">
+                <button (click)="restoreTranslation(translation.id)" class="btn btn-sm btn-secondary">restore</button>
             </td>
         </tr>
     </tbody>

@@ -2,12 +2,12 @@
     <div class="my-3 row gap-3">
         <div class="d-flex justify-content-between">
             <label for="translatorText" class="form-label fw-bold">Detectar Lenguaje</label>
-            <button type="button" class="btn btn-primary w-25"
-                [ngClass]="{'btn-warning': translationData}" (click)="save()">
+            <button type="button" class="btn btn-primary w-25" [ngClass]="{'btn-warning': translationData}"
+                (click)="save()">
                 Traducir {{translationData ? 'y actualizar' : 'y guardar'}}
             </button>
             @if (translationData) {
-                <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>
+            <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>
             }
         </div>
         <textarea formControlName="translator" class="form-control textarea" id="translatorText" rows="3"></textarea>
@@ -26,7 +26,7 @@
                 <option value="ko">coreano</option>
                 <option value="lb">luxemburgués</option>
                 <option value="pt">portugués</option>
-                <option value="qc">quechua</option>
+                <!-- <option value="qc">quechua</option> -->
                 <option value="sq">albanés</option>
                 <option value="th">tailandés</option>
                 <option value="tr">turco</option>

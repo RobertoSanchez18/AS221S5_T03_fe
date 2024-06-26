@@ -10,7 +10,7 @@ import { TranslatorComponent } from './modules/translation/components/translator
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { TranslationListInactivesComponent } from './modules/translation/components/translation-list-inactives/translation-list-inactives.component';
+import { LandingComponent } from './modules/pages/landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { TranslationListInactivesComponent } from './modules/translation/compone
     TranslationListComponent,
     TranslatorComponent,
     HeaderComponent,
-    TranslationListInactivesComponent
+    LandingComponent
   ],
   imports: [
     BrowserModule,
