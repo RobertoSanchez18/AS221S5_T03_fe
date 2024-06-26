@@ -10,6 +10,10 @@ import { TranslationResponseDto } from '../../models/translationDTO.model';
 export class TranslationListComponent implements OnInit {
 
   translations: TranslationResponseDto[] = [];
+  inactiveTranslations: TranslationResponseDto[] = [];
+  showActive = true; 
+
+
   page = 1;
   pageSize = 5;
   pagedTranslations: TranslationResponseDto[] = [];
@@ -23,20 +27,34 @@ export class TranslationListComponent implements OnInit {
   getActive() {
     this.translationService.getActive().subscribe((res) => {
       this.translations = res;
-      this.refreshPagedTranslations();
+      this.refreshPagedTranslations(); 
+      this.showActive = true;
     })
   }
 
-  refreshPagedTranslations(): void {
-    const start = (this.page - 1) * this.pageSize;
-    const end = start + this.pageSize;
-    this.pagedTranslations = this.translations.slice(start, end);
+  loadInactiveTranslations() { 
+    this.translationService.getInactive().subscribe(data => { 
+      this.translations = data;
+      this.refreshPagedTranslations();
+      this.showActive = false;
+    })
+  }
+
+  refreshPagedTranslations() {
+    this.pagedTranslations = this.translations.slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
   }
 
   deleteTranslation(id: number) { 
     this.translationService.remove(id).subscribe(data => { 
       console.log(`Translation delete with id: ${id}`)
       this.getActive();
+    })
+  }
+
+  restoreTranslation(id: number) { 
+    this.translationService.restore(id).subscribe(data => { 
+      console.log(`Translation restore with id: ${id}`)
+      this.loadInactiveTranslations();
     })
   }
 

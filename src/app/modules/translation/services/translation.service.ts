@@ -32,7 +32,7 @@ export class TranslationService {
 
   insert(TranslationRequestDto: any) {
     const headers = new HttpHeaders({
-      'Ocp-Apim-Subscription-Key': 'a8b5af174d8a4caa93097201f2481e56',
+      'Ocp-Apim-Subscription-Key': '1c9b1c40543f410d80b1a8afc07871c8',
       'Ocp-Apim-Subscription-Region': 'eastus2'
     });
     return this.http.post<TranslationResponseDto>(this.url, TranslationRequestDto, { headers });
@@ -40,7 +40,7 @@ export class TranslationService {
 
   update(id: number, TranslationRequestDto: any) {
     const headers = new HttpHeaders({
-      'Ocp-Apim-Subscription-Key': 'a8b5af174d8a4caa93097201f2481e56',
+      'Ocp-Apim-Subscription-Key': '1c9b1c40543f410d80b1a8afc07871c8',
       'Ocp-Apim-Subscription-Region': 'eastus2'
     });
     return this.http.put<TranslationResponseDto>(this.url + '/' + id, TranslationRequestDto, { headers });

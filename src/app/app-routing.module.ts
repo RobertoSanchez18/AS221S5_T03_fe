@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TranslationComponent } from './modules/translation/translation.component';
-import { TranslationListInactivesComponent } from './modules/translation/components/translation-list-inactives/translation-list-inactives.component';
+import { LandingComponent } from './modules/pages/landing/landing.component';
 
 const routes: Routes = [
+  { path: 'about', component: LandingComponent  },
   { path: 'translator', component: TranslationComponent },
-  {path: 'translation-inactives', component: TranslationListInactivesComponent},
-  { path: '', redirectTo: '/translator', pathMatch: 'full' }
+  { path: '', redirectTo: '/about', pathMatch: 'full' }
 ];
 
 @NgModule({
